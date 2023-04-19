@@ -1,6 +1,7 @@
 package board.entity;
 
-import javax.persistence.Column;
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,18 +10,18 @@ import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "t_music4")
-public class MusicEntity {
+@Table(name = "t_chattingroom")
+
+public class ChattingEntity {
 	@Id	//엔티티의 기본키(PK)
 	@GeneratedValue(strategy= GenerationType.AUTO)	// 기본키 생성 전략 (DB에서 제공하는 키 생성 전략을 따른다)
-	private int musicIdx;
-	@Column(nullable = false)
-	private String musicTitle;
-	@Column(nullable = false)
-	private String contents;
-
+	private int roomIdx;
+	
+	private int user1;
+	private int user2;
+	private int user1ChannelIdx;
+	private int user2channelIdx;
 }
