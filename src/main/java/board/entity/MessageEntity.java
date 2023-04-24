@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -22,7 +22,8 @@ public class MessageEntity {
 	private int writer;
 	private String channelId;
 	private String data;
-//	@OneToOne
-//	@JoinColumn(name = "t_chattingroom")
+	
+	@ManyToOne(targetEntity = ChattingEntity.class)
+	@JoinColumn(name = "t_chattingroom")
 	private int roomIdx;
 }

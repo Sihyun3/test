@@ -20,8 +20,8 @@ public class ChattingEntity {
 	@GeneratedValue(strategy= GenerationType.AUTO)	// 기본키 생성 전략 (DB에서 제공하는 키 생성 전략을 따른다)
 	private int roomIdx;
 	
-	private int user1;
-	private int user2;
+	private String userId1;
+	private String userId2;
 	private int user1ChannelIdx;
 	private int user2channelIdx;
 }

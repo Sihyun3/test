@@ -49,22 +49,24 @@ public class JpaMessageController {
     @Autowired
     private JpaService jpaService;
     
-    @GetMapping("/hi/{roomIdx}")
+    @GetMapping("/chatroom/{userId}")
+    public ResponseEntity<List<ChattingEntity>> chatroom(@PathVariable("userId") int userId){
+    	String a = Integer.toString(userId);
+    	System.out.println("aaaaaaaaaaaaaaaa"+a.getClass().getName());
+    	List<ChattingEntity> chattingEntity = jpaService.getChattingRoom(a);
+    	return ResponseEntity.status(HttpStatus.OK).body(chattingEntity);
+    }
+    
+    
+    @GetMapping("/chat/{roomIdx}")
 	public ResponseEntity<Map<String, Object>> connect(@PathVariable("roomIdx") int roomIdx){
     	Map<String,Object> map = new HashMap<>();
     	List<MessageEntity> MessageEntity = jpaService.getMessage(roomIdx);
     	map.put("messagelist", MessageEntity);
     	ChattingEntity chattingEntity = jpaService.getchatting(roomIdx);
-    	
-//    	map.put("channelId1", chattingEntity.getUser1());
-//    	map.put("channelId2", chattingEntity.getUser2());
-    	map.put("chatting",chattingEntity);
-//    	MessageEntity messageEntity = new MessageEntity();
-//    	List<MessageEntity> MessageEntity = jpaService.getMessage(message.getChannelId());
-//    	
 
-//    	System.out.println(message.getChannelId());
-//    	MessageEntity.add(message)
+    	map.put("chatting",chattingEntity);
+
     	return ResponseEntity.status(HttpStatus.OK).body(map);
     }
     @MessageMapping("/hello")

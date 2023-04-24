@@ -35,6 +35,18 @@ public class JpaServiceImpl implements JpaService {
 		return chatting;
 	}
 
+	@Override
+	public List<ChattingEntity> getChattingRoom(String userId) {
+		List<ChattingEntity> a = (List<ChattingEntity>) jpaChattingRepository.findByUserId1(userId);
+		List<ChattingEntity> b = (List<ChattingEntity>) jpaChattingRepository.findByUserId2(userId);
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaa" + a+"BBBBBBBBBBBBBBBBBBBBBBBBBBB" + b);
+		if(a != null) {
+			return a;
+		}else {
+			return b;
+		}
+	}
+
 
 
 
